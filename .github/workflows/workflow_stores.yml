@@ -1,0 +1,62 @@
+name: Store Information Scraper
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '7 0 2,17 * *'
+
+
+jobs:
+  job_0:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v3
+    - name: Create branch
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git checkout -b workflow_stores_output
+        git push -u origin workflow_stores_output
+
+    - name: Check out this repo
+      uses: actions/checkout@v3
+      with:
+        ref: workflow_stores_output
+    - name: Fetch latest data
+      run: |-
+         chmod +x code/store_request.sh
+         ./code/store_request.sh 
+      shell: bash
+    - name: Commit and push if it changed
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git branch
+        git pull origin workflow_stores_output 
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push
+    - name: Install python modules. Upload to Autovino.
+      env: 
+        AUTOVINO_KEY: ${{secrets.AUTOVINO_KEY}}
+      run: |-
+        python -m pip install --upgrade pip
+        pip install -r code/requirements/requirements.txt
+        python code/updateTables.py stores 
+    - name: Check out this repo
+      uses: actions/checkout@v3
+      with:
+        ref: main
+    - name: Commit and push if it changed
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git config pull.rebase true
+        git pull --allow-unrelated-histories origin workflow_stores_output 
+        git push origin main
+        git push origin --delete workflow_stores_output
+
+
+

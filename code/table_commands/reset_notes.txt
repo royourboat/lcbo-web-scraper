@@ -1,0 +1,9 @@
+DROP TABLE notes;
+
+CREATE TABLE "notes"(
+    "sku" INTEGER NOT NULL,
+    "note" TEXT NOT NULL
+);
+ALTER TABLE
+    "notes" ADD CONSTRAINT "notes_sku_foreign" FOREIGN KEY("sku") REFERENCES "products"("sku");
+

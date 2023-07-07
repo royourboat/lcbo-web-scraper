@@ -1,0 +1,14 @@
+DROP TABLE inventory;
+
+CREATE TABLE "inventory"(
+    "sku" INTEGER NOT NULL,
+    "store_id" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "checktime" BIGINT NOT NULL
+);
+ALTER TABLE
+    "inventory" ADD PRIMARY KEY("store_id", "sku");
+ALTER TABLE
+    "inventory" ADD CONSTRAINT "inventory_store_id_foreign" FOREIGN KEY("store_id") REFERENCES "stores"("store_id");
+ALTER TABLE
+    "inventory" ADD CONSTRAINT "inventory_sku_foreign" FOREIGN KEY("sku") REFERENCES "products"("sku");

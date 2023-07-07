@@ -1,0 +1,64 @@
+name: Product Inventory Scraper
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '5 12 * * 4'
+
+jobs:
+  job_0:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v3
+    - name: Create branch
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git checkout -b workflow_inventory_output
+        git push -u origin workflow_inventory_output
+    - name: Check out this repo
+      uses: actions/checkout@v3
+      with:
+        ref: workflow_inventory_output
+    - name: Fetch latest data
+      run: |-
+        chmod +x code/inventory_manager.sh
+        sudo ./code/inventory_manager.sh
+      shell: bash
+    - name: Commit and push if it changed
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git branch
+        git pull origin workflow_inventory_output 
+        git add json/*
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push
+    - name: Install python modules. Upload to Autovino server.
+      env: 
+        AUTOVINO_KEY: ${{secrets.AUTOVINO_KEY}}
+      run: |-
+        python -m pip install --upgrade pip
+        pip install -r code/requirements/requirements.txt
+        python code/updateTables.py inventory 
+      shell: bash
+    - name: Check out this repo
+      uses: actions/checkout@v3
+      with:
+        ref: main
+    - name: Commit and push if it changed
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git config pull.rebase true
+        git pull --allow-unrelated-histories origin workflow_inventory_output 
+        git push origin main
+        git push origin --delete workflow_inventory_output
+
+
+
+
+

@@ -1,0 +1,13 @@
+DROP TABLE prices;
+
+CREATE TABLE "prices"(
+    "sku" INTEGER NOT NULL,
+    "price_cents" INTEGER NULL,
+    "promo_price_cents" INTEGER NULL,
+    "checktime" BIGINT NOT NULL
+);
+ALTER TABLE
+    "prices" ADD PRIMARY KEY("sku", "checktime");
+ALTER TABLE
+    "prices" ADD CONSTRAINT "prices_sku_foreign" FOREIGN KEY("sku") REFERENCES "products"("sku");
+    

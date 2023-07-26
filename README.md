@@ -26,11 +26,6 @@ When a Github Actions workflow (see .github/workflows/) is triggered, a bash scr
 * Modify the frequency (cron) of scraping in the workflow files in .github/workflows. 
 * Please scrape gently. I purposely do not run simultaneous scraping jobs because (a) I am in no rush, (b) I don't want LCBO to be mad and change their setup, and (c) it is a waste of free cpu minutes. 
 
-## To-Do
-* Check for new products.
-* Check and delete temporary branches before scraping. 
-* Rewrite code to be more readable. This code naming [video](https://www.youtube.com/watch?v=-J3wNP6u5YU) inspires me!
-
 ## Authors
 
 Stephen Ro

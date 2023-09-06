@@ -1,4 +1,4 @@
-# LCBO Wine Scraper
+# LCBO Web Scraper Bots
 
 ## Description
 

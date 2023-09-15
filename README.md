@@ -30,7 +30,9 @@ For an in-depth guide, check out these blog posts:
 
 ## Authors
 
-Stephen Ro
+Stephen Ro 
+
+[Website](https://royourboat.github.io/)
 
 ## Inspirations
 

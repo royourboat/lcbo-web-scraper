@@ -24,6 +24,8 @@ For an in-depth guide, check out these blog posts:
 1. [Scraping LCBO Data (Part 1: Store Information)](https://royourboat.github.io/posts/2023-06-01-lcbo-scraper/)
 2. [Scraping LCBO Data (Part 2: Product Inventory)](https://royourboat.github.io/posts/2023-06-10-lcbo-scraper/)
 3. [Scraping LCBO Data (Part 3: Product Descriptions)](https://royourboat.github.io/posts/2023-06-17-lcbo-scraper/)
+4. [Making my own scraper bot!](https://royourboat.github.io/posts/2023-06-22-lcbo-github-actions-bot/)
+5. [DIY Wine Database with postgreSQL](https://royourboat.github.io/posts/2023-07-01-lcbo-psql/)
 
 ## How can I use it?
 

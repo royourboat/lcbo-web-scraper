@@ -19,6 +19,12 @@ My goal is to build my own wine recommender with affordability in mind. Scraping
 
 When a Github Actions workflow (see .github/workflows/) is triggered, a bash script is executed. The bash script contains a cURL command that returns a JSON with the desired data. That's it! 
 
+For an in-depth guide, check out these blog posts:
+
+1. [Scraping LCBO Data (Part 1: Store Information)](https://royourboat.github.io/posts/2023-06-01-lcbo-scraper/)
+2. [Scraping LCBO Data (Part 2: Product Inventory)](https://royourboat.github.io/posts/2023-06-10-lcbo-scraper/)
+3. [Scraping LCBO Data (Part 3: Product Descriptions)](https://royourboat.github.io/posts/2023-06-17-lcbo-scraper/)
+
 ## How can I use it?
 
 * Fork this repository! 

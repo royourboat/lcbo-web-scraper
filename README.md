@@ -7,13 +7,7 @@ My scraper collects three sets of data from the LCBO website:
 ![](img/robots.png)
 >Designed by pch.vector / Freepik
 
-There are approximately registered products: 9,400 wine and 4,100 non-wine. "Non-wine" products can include beer, liquor, and reusuable bags. Only 2,800 wines and 2,100 non-wines are purchasable as of 5/14/2023. 
-
-## Why did you make this?
-
-I simply want to learn about and try wine. But, the long rows of seemingly random bottles of arbitrarily priced wines is quite intimidating. Unfortunately, my experiences with LCBO's in-store wine staff/guides have been disappointing thus far. 
-
-My goal is to build my own wine recommender with affordability in mind. Scraping is the first step. My genuine hope is that I can increase the accessibility of wine to everyone! If I'm successful, people will have great first time experiences with wine, and LCBO's wine sales will boom. 
+There are approximately registered products: 9,400 wine and 4,100 non-wine. "Non-wine" products can include beer, liquor, and reusuable bags.
 
 ## How does it work?
 
